@@ -10,6 +10,7 @@ Detectors
 .. autofunction:: harris_response
 .. autofunction:: hessian_response
 .. autofunction:: dog_response
+.. autofunction:: dog_response_single
 .. autoclass:: SOLD2_detector
    :members: forward
 
@@ -47,6 +48,13 @@ Matching
 .. autoclass:: DescriptorMatcher
    :members: forward
 
+.. autoclass:: DISK
+   :members: forward, from_pretrained, heatmap_and_dense_descriptors
+
+.. autoclass:: DISKFeatures
+   :undoc-members:
+   :members: x, y, to
+
 .. autoclass:: GeometryAwareDescriptorMatcher
    :members: forward
 
@@ -56,14 +64,20 @@ Matching
 .. autoclass:: SIFTFeature
    :members: forward
 
+.. autoclass:: SIFTFeatureScaleSpace
+   :members: forward
+
 .. autoclass:: GFTTAffNetHardNet
    :members: forward
 
+.. autoclass::HesAffNetHardNet
+   :members: forward
+
 .. autoclass:: KeyNetAffNetHardNet
-  :members: forward
+   :members: forward
 
 .. autoclass:: KeyNetHardNet
-  :members: forward
+   :members: forward
 
 .. autoclass:: LocalFeatureMatcher
    :members: forward
@@ -85,7 +99,9 @@ Local Affine Frames (LAF)
 .. autofunction:: scale_laf
 .. autofunction:: get_laf_scale
 .. autofunction:: get_laf_center
+.. autofunction:: rotate_laf
 .. autofunction:: get_laf_orientation
+.. autofunction:: set_laf_orientation
 .. autofunction:: laf_from_center_scale_ori
 .. autofunction:: laf_is_inside_image
 .. autofunction:: laf_to_three_points
@@ -100,13 +116,18 @@ Module
 .. autoclass:: CornerGFTT
 .. autoclass:: CornerHarris
 .. autoclass:: BlobDoG
+.. autoclass:: BlobDoGSingle
 .. autoclass:: KeyNet
 .. autoclass:: FilterResponseNorm2d
 .. autoclass:: TLU
 
 
+.. autoclass:: MultiResolutionDetector
+   :members: forward, remove_borders, detect_features_on_single_level, detect
+
+
 .. autoclass:: ScaleSpaceDetector
-   :members: forward
+  :members: forward
 
 .. autoclass:: KeyNetDetector
    :members: forward
