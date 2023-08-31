@@ -1,0 +1,792 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
+        <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/utils/image_print.html" />
+
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><!-- Generated with Sphinx 7.2.5 and Furo 2023.08.19 -->
+        <title>kornia.utils.image_print - Kornia</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=649a27d8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css?v=9b880210" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f0f0f0;
+  --color-code-foreground: black;
+  --color-sidebar-background: #3980F5;
+  --color-sidebar-background-border: #3980F5;
+  --color-sidebar-caption-text: white;
+  --color-sidebar-link-text--top-level: white;
+  --color-sidebar-link-text: white;
+  --sidebar-caption-font-size: normal;
+  --color-sidebar-item-background--hover:  #5dade2;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  --color-sidebar-background: #1a1c1e;
+  --color-sidebar-background-border: #1a1c1e;
+  --color-sidebar-caption-text: white;
+  --color-sidebar-link-text--top-level: white;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  --color-sidebar-background: #1a1c1e;
+  --color-sidebar-background-border: #1a1c1e;
+  --color-sidebar-caption-text: white;
+  --color-sidebar-link-text--top-level: white;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">Kornia</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../../../_static/img/kornia_logo_only_light.svg" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../../../_static/img/kornia_logo_only_dark.svg" alt="Dark Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">GET STARTED</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../get-started/introduction.html">What is Kornia library ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../get-started/highlights.html">Highlighted Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../get-started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../get-started/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://kornia.github.io/tutorials/">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../get-started/training.html">Training API (experimental)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.luxonis.com/en/latest/pages/tutorials/creating-custom-nn-models/#kornia">OpenCV AI Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../get-started/governance.html">Kornia AI Organization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../augmentation.html">kornia.augmentation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of kornia.augmentation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../augmentation.auto.html">Automatic Augmentation Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../augmentation.base.html">Base Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../augmentation.container.html">Augmentation Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../augmentation.module.html">Image Augmentations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../color.html">kornia.color</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contrib.html">kornia.contrib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core.html">kornia.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../enhance.html">kornia.enhance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../feature.html">kornia.feature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../filters.html">kornia.filters</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../geometry.html">kornia.geometry</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of kornia.geometry</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.bbox.html">kornia.geometry.bbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.boxes.html">kornia.geometry.boxes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.keypoints.html">kornia.geometry.keypoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.calibration.html">kornia.geometry.calibration</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../geometry.camera.html">kornia.geometry.camera</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of kornia.geometry.camera</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../geometry.camera.pinhole.html">Pinhole Camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../geometry.camera.perspective.html">Perspective Camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../geometry.camera.stereo.html">Stereo Camera</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.conversions.html">kornia.geometry.conversions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.depth.html">kornia.geometry.depth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.epipolar.html">kornia.geometry.epipolar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.homography.html">kornia.geometry.homography</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.liegroup.html">kornia.geometry.liegroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.liegroup.html#lie-algebra">lie algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.liegroup.html#lie-group-and-lie-algebra">lie group and lie algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.linalg.html">kornia.geometry.linalg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.line.html">kornia.geometry.line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.quaternion.html">kornia.geometry.quaternion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.solvers.html">kornia.geometry.solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.subpix.html">kornia.geometry.subpix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.transform.html">kornia.geometry.transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../geometry.ransac.html">kornia.geometry.ransac</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../sensors.html">kornia.sensors</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of kornia.sensors</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../sensors.camera.html">kornia.sensors.camera</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../io.html">kornia.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../image.html">kornia.image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../losses.html">kornia.losses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../metrics.html">kornia.metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../morphology.html">kornia.morphology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tracking.html">kornia.tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing.html">kornia.testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utils.html">kornia.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../x.html">kornia.x</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">KORNIA APPLICATIONS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/intro.html">Computer Vision Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/visual_prompting.html">Visual Prompting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/face_detection.html">Face Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/image_augmentations.html">Image Augmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/image_classification.html">Image Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/image_matching.html">Image Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/image_stitching.html">Image Stitching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/image_registration.html">Image Registration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/image_denoising.html">Image Denoising</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/semantic_segmentation.html">Semantic segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/object_detection.html">Object detection</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">KORNIA MODELS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/rt_detr.html">Real-Time Detection Transformer (RT-DETR)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/segment_anything.html">Segment Anything (SAM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/mobile_sam.html">Faster Segment Anything (MobileSAM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/yunet.html">YuNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/vit.html">Vision Transformer (ViT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/vit_mobile.html">MobileViT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/tiny_vit.html">TinyViT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/loftr.html">LoFTR (matching)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/defmo.html">DeFMO (video)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/hardnet.html">Hardnet (descriptor)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/affnet.html">Affnet (detection)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/sold2.html">SOLD2 (Line detection and matching)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/dexined.html">Dexined (edge detection)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SUPPORT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kornia/kornia/issues">Issue tracker</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://join.slack.com/t/kornia/shared_invite/zt-csobk21g-2AQRi~X9Uu6PLMuUZdvfjA">Slack community</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://librecv.org">LibreCV community</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://twitter.com/kornia_foss">Twitter @kornia_foss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/chinese.html">Kornia 社区</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.youtube.com/channel/UCI1SE1Ij2Fast5BSKxoa7Ag">Kornia Youtube</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/company/kornia/">Kornia LinkedIn</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://kornia.org">Kornia AI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMUNITY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/contribute.html">Contribute to Kornia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/faqs.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/bibliography.html">Bibliography</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <h1>Source code for kornia.utils.image_print</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Convert an image tensor to an ANSI text string (xterm-256color).</span>
+
+<span class="sd">Nice long listing of all 256 colors and their codes.</span>
+
+<span class="sd">Taken from https://gist.github.com/klange/1687427</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">float16</span><span class="p">,</span> <span class="n">float32</span><span class="p">,</span> <span class="n">float64</span>
+
+<span class="kn">import</span> <span class="nn">kornia</span>
+<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Tensor</span>
+<span class="kn">from</span> <span class="nn">kornia.core.check</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK_IS_IMAGE</span><span class="p">,</span> <span class="n">KORNIA_CHECK_SHAPE</span>
+<span class="kn">from</span> <span class="nn">kornia.io</span> <span class="kn">import</span> <span class="n">ImageLoadType</span>
+
+<span class="c1"># color look-up table</span>
+<span class="c1"># 8-bit, RGB hex</span>
+<span class="n">CLUT</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># Primary 3-bit (8 colors). Unique representation!</span>
+    <span class="p">(</span><span class="s1">&#39;00&#39;</span><span class="p">,</span> <span class="s1">&#39;000000&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;800000&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;02&#39;</span><span class="p">,</span> <span class="s1">&#39;008000&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;03&#39;</span><span class="p">,</span> <span class="s1">&#39;808000&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;04&#39;</span><span class="p">,</span> <span class="s1">&#39;000080&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;05&#39;</span><span class="p">,</span> <span class="s1">&#39;800080&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;06&#39;</span><span class="p">,</span> <span class="s1">&#39;008080&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;07&#39;</span><span class="p">,</span> <span class="s1">&#39;c0c0c0&#39;</span><span class="p">),</span>
+    <span class="c1"># Equivalent &quot;bright&quot; versions of original 8 colors.</span>
+    <span class="p">(</span><span class="s1">&#39;08&#39;</span><span class="p">,</span> <span class="s1">&#39;808080&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;09&#39;</span><span class="p">,</span> <span class="s1">&#39;ff0000&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;00ff00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;11&#39;</span><span class="p">,</span> <span class="s1">&#39;ffff00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;12&#39;</span><span class="p">,</span> <span class="s1">&#39;0000ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;13&#39;</span><span class="p">,</span> <span class="s1">&#39;ff00ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;14&#39;</span><span class="p">,</span> <span class="s1">&#39;00ffff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;15&#39;</span><span class="p">,</span> <span class="s1">&#39;ffffff&#39;</span><span class="p">),</span>
+    <span class="c1"># Strictly ascending.</span>
+    <span class="p">(</span><span class="s1">&#39;16&#39;</span><span class="p">,</span> <span class="s1">&#39;000000&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;17&#39;</span><span class="p">,</span> <span class="s1">&#39;00005f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;18&#39;</span><span class="p">,</span> <span class="s1">&#39;000087&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;19&#39;</span><span class="p">,</span> <span class="s1">&#39;0000af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="s1">&#39;0000d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;21&#39;</span><span class="p">,</span> <span class="s1">&#39;0000ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;22&#39;</span><span class="p">,</span> <span class="s1">&#39;005f00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;23&#39;</span><span class="p">,</span> <span class="s1">&#39;005f5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;24&#39;</span><span class="p">,</span> <span class="s1">&#39;005f87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;25&#39;</span><span class="p">,</span> <span class="s1">&#39;005faf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;26&#39;</span><span class="p">,</span> <span class="s1">&#39;005fd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;27&#39;</span><span class="p">,</span> <span class="s1">&#39;005fff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;28&#39;</span><span class="p">,</span> <span class="s1">&#39;008700&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;29&#39;</span><span class="p">,</span> <span class="s1">&#39;00875f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;008787&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;31&#39;</span><span class="p">,</span> <span class="s1">&#39;0087af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;32&#39;</span><span class="p">,</span> <span class="s1">&#39;0087d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;33&#39;</span><span class="p">,</span> <span class="s1">&#39;0087ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;34&#39;</span><span class="p">,</span> <span class="s1">&#39;00af00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;35&#39;</span><span class="p">,</span> <span class="s1">&#39;00af5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;36&#39;</span><span class="p">,</span> <span class="s1">&#39;00af87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;37&#39;</span><span class="p">,</span> <span class="s1">&#39;00afaf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;38&#39;</span><span class="p">,</span> <span class="s1">&#39;00afd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;39&#39;</span><span class="p">,</span> <span class="s1">&#39;00afff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;40&#39;</span><span class="p">,</span> <span class="s1">&#39;00d700&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;41&#39;</span><span class="p">,</span> <span class="s1">&#39;00d75f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;42&#39;</span><span class="p">,</span> <span class="s1">&#39;00d787&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;43&#39;</span><span class="p">,</span> <span class="s1">&#39;00d7af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;44&#39;</span><span class="p">,</span> <span class="s1">&#39;00d7d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;45&#39;</span><span class="p">,</span> <span class="s1">&#39;00d7ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;46&#39;</span><span class="p">,</span> <span class="s1">&#39;00ff00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;47&#39;</span><span class="p">,</span> <span class="s1">&#39;00ff5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;48&#39;</span><span class="p">,</span> <span class="s1">&#39;00ff87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;49&#39;</span><span class="p">,</span> <span class="s1">&#39;00ffaf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;00ffd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;51&#39;</span><span class="p">,</span> <span class="s1">&#39;00ffff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;52&#39;</span><span class="p">,</span> <span class="s1">&#39;5f0000&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;53&#39;</span><span class="p">,</span> <span class="s1">&#39;5f005f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;54&#39;</span><span class="p">,</span> <span class="s1">&#39;5f0087&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;55&#39;</span><span class="p">,</span> <span class="s1">&#39;5f00af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;56&#39;</span><span class="p">,</span> <span class="s1">&#39;5f00d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;57&#39;</span><span class="p">,</span> <span class="s1">&#39;5f00ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;58&#39;</span><span class="p">,</span> <span class="s1">&#39;5f5f00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;59&#39;</span><span class="p">,</span> <span class="s1">&#39;5f5f5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;60&#39;</span><span class="p">,</span> <span class="s1">&#39;5f5f87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;61&#39;</span><span class="p">,</span> <span class="s1">&#39;5f5faf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;62&#39;</span><span class="p">,</span> <span class="s1">&#39;5f5fd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;63&#39;</span><span class="p">,</span> <span class="s1">&#39;5f5fff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;64&#39;</span><span class="p">,</span> <span class="s1">&#39;5f8700&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;65&#39;</span><span class="p">,</span> <span class="s1">&#39;5f875f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;66&#39;</span><span class="p">,</span> <span class="s1">&#39;5f8787&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;67&#39;</span><span class="p">,</span> <span class="s1">&#39;5f87af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;68&#39;</span><span class="p">,</span> <span class="s1">&#39;5f87d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;69&#39;</span><span class="p">,</span> <span class="s1">&#39;5f87ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;70&#39;</span><span class="p">,</span> <span class="s1">&#39;5faf00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;71&#39;</span><span class="p">,</span> <span class="s1">&#39;5faf5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;72&#39;</span><span class="p">,</span> <span class="s1">&#39;5faf87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;73&#39;</span><span class="p">,</span> <span class="s1">&#39;5fafaf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;74&#39;</span><span class="p">,</span> <span class="s1">&#39;5fafd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;75&#39;</span><span class="p">,</span> <span class="s1">&#39;5fafff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;76&#39;</span><span class="p">,</span> <span class="s1">&#39;5fd700&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;77&#39;</span><span class="p">,</span> <span class="s1">&#39;5fd75f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;78&#39;</span><span class="p">,</span> <span class="s1">&#39;5fd787&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;79&#39;</span><span class="p">,</span> <span class="s1">&#39;5fd7af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;80&#39;</span><span class="p">,</span> <span class="s1">&#39;5fd7d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;81&#39;</span><span class="p">,</span> <span class="s1">&#39;5fd7ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;82&#39;</span><span class="p">,</span> <span class="s1">&#39;5fff00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;83&#39;</span><span class="p">,</span> <span class="s1">&#39;5fff5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;84&#39;</span><span class="p">,</span> <span class="s1">&#39;5fff87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;85&#39;</span><span class="p">,</span> <span class="s1">&#39;5fffaf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;86&#39;</span><span class="p">,</span> <span class="s1">&#39;5fffd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;87&#39;</span><span class="p">,</span> <span class="s1">&#39;5fffff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;88&#39;</span><span class="p">,</span> <span class="s1">&#39;870000&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;89&#39;</span><span class="p">,</span> <span class="s1">&#39;87005f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;90&#39;</span><span class="p">,</span> <span class="s1">&#39;870087&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;91&#39;</span><span class="p">,</span> <span class="s1">&#39;8700af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;92&#39;</span><span class="p">,</span> <span class="s1">&#39;8700d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;93&#39;</span><span class="p">,</span> <span class="s1">&#39;8700ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;94&#39;</span><span class="p">,</span> <span class="s1">&#39;875f00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;95&#39;</span><span class="p">,</span> <span class="s1">&#39;875f5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;96&#39;</span><span class="p">,</span> <span class="s1">&#39;875f87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;97&#39;</span><span class="p">,</span> <span class="s1">&#39;875faf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;98&#39;</span><span class="p">,</span> <span class="s1">&#39;875fd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;99&#39;</span><span class="p">,</span> <span class="s1">&#39;875fff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;100&#39;</span><span class="p">,</span> <span class="s1">&#39;878700&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;101&#39;</span><span class="p">,</span> <span class="s1">&#39;87875f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;102&#39;</span><span class="p">,</span> <span class="s1">&#39;878787&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;103&#39;</span><span class="p">,</span> <span class="s1">&#39;8787af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;104&#39;</span><span class="p">,</span> <span class="s1">&#39;8787d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;105&#39;</span><span class="p">,</span> <span class="s1">&#39;8787ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;106&#39;</span><span class="p">,</span> <span class="s1">&#39;87af00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;107&#39;</span><span class="p">,</span> <span class="s1">&#39;87af5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;108&#39;</span><span class="p">,</span> <span class="s1">&#39;87af87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;109&#39;</span><span class="p">,</span> <span class="s1">&#39;87afaf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;110&#39;</span><span class="p">,</span> <span class="s1">&#39;87afd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;111&#39;</span><span class="p">,</span> <span class="s1">&#39;87afff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;112&#39;</span><span class="p">,</span> <span class="s1">&#39;87d700&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;113&#39;</span><span class="p">,</span> <span class="s1">&#39;87d75f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;114&#39;</span><span class="p">,</span> <span class="s1">&#39;87d787&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;115&#39;</span><span class="p">,</span> <span class="s1">&#39;87d7af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;116&#39;</span><span class="p">,</span> <span class="s1">&#39;87d7d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;117&#39;</span><span class="p">,</span> <span class="s1">&#39;87d7ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;118&#39;</span><span class="p">,</span> <span class="s1">&#39;87ff00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;119&#39;</span><span class="p">,</span> <span class="s1">&#39;87ff5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;120&#39;</span><span class="p">,</span> <span class="s1">&#39;87ff87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;121&#39;</span><span class="p">,</span> <span class="s1">&#39;87ffaf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;122&#39;</span><span class="p">,</span> <span class="s1">&#39;87ffd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;123&#39;</span><span class="p">,</span> <span class="s1">&#39;87ffff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;124&#39;</span><span class="p">,</span> <span class="s1">&#39;af0000&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;125&#39;</span><span class="p">,</span> <span class="s1">&#39;af005f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;126&#39;</span><span class="p">,</span> <span class="s1">&#39;af0087&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;127&#39;</span><span class="p">,</span> <span class="s1">&#39;af00af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;128&#39;</span><span class="p">,</span> <span class="s1">&#39;af00d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;129&#39;</span><span class="p">,</span> <span class="s1">&#39;af00ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;130&#39;</span><span class="p">,</span> <span class="s1">&#39;af5f00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;131&#39;</span><span class="p">,</span> <span class="s1">&#39;af5f5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;132&#39;</span><span class="p">,</span> <span class="s1">&#39;af5f87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;133&#39;</span><span class="p">,</span> <span class="s1">&#39;af5faf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;134&#39;</span><span class="p">,</span> <span class="s1">&#39;af5fd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;135&#39;</span><span class="p">,</span> <span class="s1">&#39;af5fff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;136&#39;</span><span class="p">,</span> <span class="s1">&#39;af8700&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;137&#39;</span><span class="p">,</span> <span class="s1">&#39;af875f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;138&#39;</span><span class="p">,</span> <span class="s1">&#39;af8787&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;139&#39;</span><span class="p">,</span> <span class="s1">&#39;af87af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;140&#39;</span><span class="p">,</span> <span class="s1">&#39;af87d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;141&#39;</span><span class="p">,</span> <span class="s1">&#39;af87ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;142&#39;</span><span class="p">,</span> <span class="s1">&#39;afaf00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;143&#39;</span><span class="p">,</span> <span class="s1">&#39;afaf5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;144&#39;</span><span class="p">,</span> <span class="s1">&#39;afaf87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;145&#39;</span><span class="p">,</span> <span class="s1">&#39;afafaf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;146&#39;</span><span class="p">,</span> <span class="s1">&#39;afafd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;147&#39;</span><span class="p">,</span> <span class="s1">&#39;afafff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;148&#39;</span><span class="p">,</span> <span class="s1">&#39;afd700&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;149&#39;</span><span class="p">,</span> <span class="s1">&#39;afd75f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;150&#39;</span><span class="p">,</span> <span class="s1">&#39;afd787&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;151&#39;</span><span class="p">,</span> <span class="s1">&#39;afd7af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;152&#39;</span><span class="p">,</span> <span class="s1">&#39;afd7d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;153&#39;</span><span class="p">,</span> <span class="s1">&#39;afd7ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;154&#39;</span><span class="p">,</span> <span class="s1">&#39;afff00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;155&#39;</span><span class="p">,</span> <span class="s1">&#39;afff5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;156&#39;</span><span class="p">,</span> <span class="s1">&#39;afff87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;157&#39;</span><span class="p">,</span> <span class="s1">&#39;afffaf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;158&#39;</span><span class="p">,</span> <span class="s1">&#39;afffd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;159&#39;</span><span class="p">,</span> <span class="s1">&#39;afffff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;160&#39;</span><span class="p">,</span> <span class="s1">&#39;d70000&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;161&#39;</span><span class="p">,</span> <span class="s1">&#39;d7005f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;162&#39;</span><span class="p">,</span> <span class="s1">&#39;d70087&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;163&#39;</span><span class="p">,</span> <span class="s1">&#39;d700af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;164&#39;</span><span class="p">,</span> <span class="s1">&#39;d700d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;165&#39;</span><span class="p">,</span> <span class="s1">&#39;d700ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;166&#39;</span><span class="p">,</span> <span class="s1">&#39;d75f00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;167&#39;</span><span class="p">,</span> <span class="s1">&#39;d75f5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;168&#39;</span><span class="p">,</span> <span class="s1">&#39;d75f87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;169&#39;</span><span class="p">,</span> <span class="s1">&#39;d75faf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;170&#39;</span><span class="p">,</span> <span class="s1">&#39;d75fd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;171&#39;</span><span class="p">,</span> <span class="s1">&#39;d75fff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;172&#39;</span><span class="p">,</span> <span class="s1">&#39;d78700&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;173&#39;</span><span class="p">,</span> <span class="s1">&#39;d7875f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;174&#39;</span><span class="p">,</span> <span class="s1">&#39;d78787&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;175&#39;</span><span class="p">,</span> <span class="s1">&#39;d787af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;176&#39;</span><span class="p">,</span> <span class="s1">&#39;d787d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;177&#39;</span><span class="p">,</span> <span class="s1">&#39;d787ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;178&#39;</span><span class="p">,</span> <span class="s1">&#39;d7af00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;179&#39;</span><span class="p">,</span> <span class="s1">&#39;d7af5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;180&#39;</span><span class="p">,</span> <span class="s1">&#39;d7af87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;181&#39;</span><span class="p">,</span> <span class="s1">&#39;d7afaf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;182&#39;</span><span class="p">,</span> <span class="s1">&#39;d7afd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;183&#39;</span><span class="p">,</span> <span class="s1">&#39;d7afff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;184&#39;</span><span class="p">,</span> <span class="s1">&#39;d7d700&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;185&#39;</span><span class="p">,</span> <span class="s1">&#39;d7d75f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;186&#39;</span><span class="p">,</span> <span class="s1">&#39;d7d787&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;187&#39;</span><span class="p">,</span> <span class="s1">&#39;d7d7af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;188&#39;</span><span class="p">,</span> <span class="s1">&#39;d7d7d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;189&#39;</span><span class="p">,</span> <span class="s1">&#39;d7d7ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;190&#39;</span><span class="p">,</span> <span class="s1">&#39;d7ff00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;191&#39;</span><span class="p">,</span> <span class="s1">&#39;d7ff5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;192&#39;</span><span class="p">,</span> <span class="s1">&#39;d7ff87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;193&#39;</span><span class="p">,</span> <span class="s1">&#39;d7ffaf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;194&#39;</span><span class="p">,</span> <span class="s1">&#39;d7ffd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;195&#39;</span><span class="p">,</span> <span class="s1">&#39;d7ffff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;196&#39;</span><span class="p">,</span> <span class="s1">&#39;ff0000&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;197&#39;</span><span class="p">,</span> <span class="s1">&#39;ff005f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;198&#39;</span><span class="p">,</span> <span class="s1">&#39;ff0087&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;199&#39;</span><span class="p">,</span> <span class="s1">&#39;ff00af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;200&#39;</span><span class="p">,</span> <span class="s1">&#39;ff00d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;201&#39;</span><span class="p">,</span> <span class="s1">&#39;ff00ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;202&#39;</span><span class="p">,</span> <span class="s1">&#39;ff5f00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;203&#39;</span><span class="p">,</span> <span class="s1">&#39;ff5f5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;204&#39;</span><span class="p">,</span> <span class="s1">&#39;ff5f87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;205&#39;</span><span class="p">,</span> <span class="s1">&#39;ff5faf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;206&#39;</span><span class="p">,</span> <span class="s1">&#39;ff5fd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;207&#39;</span><span class="p">,</span> <span class="s1">&#39;ff5fff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;208&#39;</span><span class="p">,</span> <span class="s1">&#39;ff8700&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;209&#39;</span><span class="p">,</span> <span class="s1">&#39;ff875f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;210&#39;</span><span class="p">,</span> <span class="s1">&#39;ff8787&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;211&#39;</span><span class="p">,</span> <span class="s1">&#39;ff87af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;212&#39;</span><span class="p">,</span> <span class="s1">&#39;ff87d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;213&#39;</span><span class="p">,</span> <span class="s1">&#39;ff87ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;214&#39;</span><span class="p">,</span> <span class="s1">&#39;ffaf00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;215&#39;</span><span class="p">,</span> <span class="s1">&#39;ffaf5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;216&#39;</span><span class="p">,</span> <span class="s1">&#39;ffaf87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;217&#39;</span><span class="p">,</span> <span class="s1">&#39;ffafaf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;218&#39;</span><span class="p">,</span> <span class="s1">&#39;ffafd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;219&#39;</span><span class="p">,</span> <span class="s1">&#39;ffafff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;220&#39;</span><span class="p">,</span> <span class="s1">&#39;ffd700&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;221&#39;</span><span class="p">,</span> <span class="s1">&#39;ffd75f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;222&#39;</span><span class="p">,</span> <span class="s1">&#39;ffd787&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;223&#39;</span><span class="p">,</span> <span class="s1">&#39;ffd7af&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;224&#39;</span><span class="p">,</span> <span class="s1">&#39;ffd7d7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;225&#39;</span><span class="p">,</span> <span class="s1">&#39;ffd7ff&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;226&#39;</span><span class="p">,</span> <span class="s1">&#39;ffff00&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;227&#39;</span><span class="p">,</span> <span class="s1">&#39;ffff5f&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;228&#39;</span><span class="p">,</span> <span class="s1">&#39;ffff87&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;229&#39;</span><span class="p">,</span> <span class="s1">&#39;ffffaf&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;230&#39;</span><span class="p">,</span> <span class="s1">&#39;ffffd7&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;231&#39;</span><span class="p">,</span> <span class="s1">&#39;ffffff&#39;</span><span class="p">),</span>
+    <span class="c1"># Gray-scale range.</span>
+    <span class="p">(</span><span class="s1">&#39;232&#39;</span><span class="p">,</span> <span class="s1">&#39;080808&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;233&#39;</span><span class="p">,</span> <span class="s1">&#39;121212&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;234&#39;</span><span class="p">,</span> <span class="s1">&#39;1c1c1c&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;235&#39;</span><span class="p">,</span> <span class="s1">&#39;262626&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;236&#39;</span><span class="p">,</span> <span class="s1">&#39;303030&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;237&#39;</span><span class="p">,</span> <span class="s1">&#39;3a3a3a&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;238&#39;</span><span class="p">,</span> <span class="s1">&#39;444444&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;239&#39;</span><span class="p">,</span> <span class="s1">&#39;4e4e4e&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;240&#39;</span><span class="p">,</span> <span class="s1">&#39;585858&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;241&#39;</span><span class="p">,</span> <span class="s1">&#39;626262&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;242&#39;</span><span class="p">,</span> <span class="s1">&#39;6c6c6c&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;243&#39;</span><span class="p">,</span> <span class="s1">&#39;767676&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;244&#39;</span><span class="p">,</span> <span class="s1">&#39;808080&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;245&#39;</span><span class="p">,</span> <span class="s1">&#39;8a8a8a&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;246&#39;</span><span class="p">,</span> <span class="s1">&#39;949494&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;247&#39;</span><span class="p">,</span> <span class="s1">&#39;9e9e9e&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;248&#39;</span><span class="p">,</span> <span class="s1">&#39;a8a8a8&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;249&#39;</span><span class="p">,</span> <span class="s1">&#39;b2b2b2&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;250&#39;</span><span class="p">,</span> <span class="s1">&#39;bcbcbc&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;251&#39;</span><span class="p">,</span> <span class="s1">&#39;c6c6c6&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;252&#39;</span><span class="p">,</span> <span class="s1">&#39;d0d0d0&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;253&#39;</span><span class="p">,</span> <span class="s1">&#39;dadada&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;254&#39;</span><span class="p">,</span> <span class="s1">&#39;e4e4e4&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;255&#39;</span><span class="p">,</span> <span class="s1">&#39;eeeeee&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+<span class="n">SHORT2RGB_DICT</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">CLUT</span><span class="p">)</span>
+<span class="n">RGB2SHORT_DICT</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">SHORT2RGB_DICT</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+
+<span class="k">def</span> <span class="nf">_str2hex</span><span class="p">(</span><span class="n">hexstr</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">hexstr</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_strip_hash</span><span class="p">(</span><span class="n">rgb</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="c1"># Strip leading `#` if exists.</span>
+    <span class="k">if</span> <span class="n">rgb</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">):</span>
+        <span class="n">rgb</span> <span class="o">=</span> <span class="n">rgb</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">rgb</span>
+
+
+<span class="k">def</span> <span class="nf">short2rgb</span><span class="p">(</span><span class="n">short</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">SHORT2RGB_DICT</span><span class="p">[</span><span class="n">short</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">rgb2short</span><span class="p">(</span><span class="n">rgb</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find the closest xterm-256 approximation to the given RGB value.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        rgb: Hex code representing an RGB value, eg, &#39;abcdef&#39;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        String between 0 and 255, compatible with xterm.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; rgb2short(&#39;123456&#39;)</span>
+<span class="sd">        (&#39;23&#39;, &#39;005f5f&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; rgb2short(&#39;ffffff&#39;)</span>
+<span class="sd">        (&#39;231&#39;, &#39;ffffff&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; rgb2short(&#39;0DADD6&#39;)  # vimeo logo</span>
+<span class="sd">        (&#39;38&#39;, &#39;00afd7&#39;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">_strip_hash</span><span class="p">(</span><span class="n">rgb</span><span class="p">)</span>
+    <span class="n">incs</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x5F</span><span class="p">,</span> <span class="mh">0x87</span><span class="p">,</span> <span class="mh">0xAF</span><span class="p">,</span> <span class="mh">0xD7</span><span class="p">,</span> <span class="mh">0xFF</span><span class="p">)</span>
+    <span class="c1"># Break 6-char RGB code into 3 integer vals.</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(..)(..)(..)&#39;</span><span class="p">,</span> <span class="n">rgb</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]]</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">incs</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">s</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">incs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">incs</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># smaller, bigger</span>
+            <span class="k">if</span> <span class="n">s</span> <span class="o">&lt;=</span> <span class="n">part</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">:</span>
+                <span class="n">s1</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">part</span><span class="p">)</span>
+                <span class="n">b1</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">part</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">s1</span> <span class="o">&lt;</span> <span class="n">b1</span><span class="p">:</span>
+                    <span class="n">closest</span> <span class="o">=</span> <span class="n">s</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">closest</span> <span class="o">=</span> <span class="n">b</span>
+                <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">closest</span><span class="p">)</span>
+                <span class="k">break</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">_res</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([(</span><span class="s1">&#39;%02.x&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">res</span><span class="p">])</span>
+    <span class="n">equiv</span> <span class="o">=</span> <span class="n">RGB2SHORT_DICT</span><span class="p">[</span><span class="n">_res</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">equiv</span><span class="p">,</span> <span class="n">_res</span>
+
+
+<div class="viewcode-block" id="image_to_string">
+<a class="viewcode-back" href="../../../utils.html#kornia.utils.image_to_string">[docs]</a>
+<span class="k">def</span> <span class="nf">image_to_string</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">max_width</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">256</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Obtain the closest xterm-256 approximation string from an image tensor.</span>
+
+<span class="sd">    The tensor shall be either 0~1 float type or 0~255 long type.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        image: an RGB image with shape :math:`3HW`.</span>
+<span class="sd">        max_width: maximum width of the input image.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_IS_IMAGE</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">raises</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">float16</span><span class="p">,</span> <span class="n">float32</span><span class="p">,</span> <span class="n">float64</span><span class="p">]:</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">image</span> <span class="o">/</span> <span class="mf">255.0</span>  <span class="c1"># In case of resizing.</span>
+
+    <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max_width</span><span class="p">:</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">kornia</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">max_width</span> <span class="o">//</span> <span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">max_width</span><span class="p">))</span>
+
+    <span class="n">image</span> <span class="o">=</span> <span class="p">(</span><span class="n">image</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">long</span><span class="p">()</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)):</span>
+            <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">image</span><span class="p">[:,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">r</span><span class="si">:</span><span class="s2">2x</span><span class="si">}{</span><span class="n">g</span><span class="si">:</span><span class="s2">2x</span><span class="si">}{</span><span class="n">b</span><span class="si">:</span><span class="s2">2x</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">short</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">rgb2short</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[48;5;</span><span class="si">%s</span><span class="s2">m  &quot;</span> <span class="o">%</span> <span class="n">short</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[0m</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="n">res</span></div>
+
+
+
+<div class="viewcode-block" id="print_image">
+<a class="viewcode-back" href="../../../utils.html#kornia.utils.print_image">[docs]</a>
+<span class="k">def</span> <span class="nf">print_image</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">max_width</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">96</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Print an image to the terminal.</span>
+
+<span class="sd">    .. image:: https://github.com/kornia/data/blob/main/print_image.png?raw=true</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        image: path to a valid image file or a tensor.</span>
+<span class="sd">        max_width: maximum width to print to terminal.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        Need to use `print_image(...)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">kornia</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">ImageLoadType</span><span class="o">.</span><span class="n">RGB8</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">image</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expect image type to be either Tensor or str. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">image</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">image_to_string</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">max_width</span><span class="p">))</span></div>
+
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2019, Kornia developers
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div>
+    <script src="../../../_static/documentation_options.js?v=b9678aa1"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script src="../../../_static/js/custom.js?v=50ca88b5"></script>
+    
+    <!-- DocsQA integration start -->
+    <script src="https://jina-docqa-ui.netlify.app/dist/qabot.js"></script>
+    <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/3.3.1/gradio.js"></script>
+    <script>
+      // This prevents the global search interfere with qa-bot internal text input.
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('qa-bot').forEach((x) => {
+          x.addEventListener('keydown', (event) => {
+            event.stopPropagation();
+          });
+        });
+      });
+    </script>
+    <qa-bot
+        token="_LX-ltnplMGK5qrT05qV-auHldTT_babktyfuL2Gn8aP9_eDldufuLiA"
+        title="Kornia"
+        description="State-of-the-art and curated Computer Vision algorithms for AI"
+        avatar-src="https://github.com/kornia/data/raw/main/pixie_QAbot.png">
+            <template>
+                <dl>
+                    <dt>You can ask questions about Kornia. Try</dt>
+                    <dd>What is Kornia?</dd>
+                    <dd>How can i find correspondences between two images?</dd>
+                    <dd>How to do image augmentation?</dd>
+                </dl>
+            </template>
+    </qa-bot>
+    <!-- DocsQA integration end -->
+</body>
+</html>

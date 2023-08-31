@@ -1,19 +1,19 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Kornia AI Organization" href="governance.html" /><link rel="prev" title="About" href="about.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/get-started/training.html" />
 
-    <link rel="shortcut icon" href="../_static/kornia_logo_favicon.png"/><!-- Generated with Sphinx 6.2.1 and Furo 2023.07.26 -->
+    <link rel="shortcut icon" href="../_static/kornia_logo_favicon.png"/><!-- Generated with Sphinx 7.2.5 and Furo 2023.08.19 -->
         <title>Training API (experimental) - Kornia</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=369552022d0b975c8e74270ce6eabe0fb7978f24" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/main.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=649a27d8" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/main.css?v=9b880210" />
     
     
 
@@ -182,7 +182,7 @@
 <li class="toctree-l1"><a class="reference internal" href="highlights.html">Highlighted Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://kornia-tutorials.readthedocs.io/en/latest/">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://kornia.github.io/tutorials/">Tutorials</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Training API (experimental)</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://docs.luxonis.com/en/latest/pages/tutorials/creating-custom-nn-models/#kornia">OpenCV AI Kit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="governance.html">Kornia AI Organization</a></li>
@@ -198,6 +198,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../color.html">kornia.color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contrib.html">kornia.contrib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core.html">kornia.core</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enhance.html">kornia.enhance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../feature.html">kornia.feature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../filters.html">kornia.filters</a></li>
@@ -217,9 +218,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../geometry.epipolar.html">kornia.geometry.epipolar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometry.homography.html">kornia.geometry.homography</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometry.liegroup.html">kornia.geometry.liegroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry.liegroup.html#lie-algebra">lie algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry.liegroup.html#lie-group-and-lie-algebra">lie group and lie algebra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometry.linalg.html">kornia.geometry.linalg</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometry.line.html">kornia.geometry.line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometry.quaternion.html">kornia.geometry.quaternion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry.solvers.html">kornia.geometry.solvers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometry.subpix.html">kornia.geometry.subpix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometry.transform.html">kornia.geometry.transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometry.ransac.html">kornia.geometry.ransac</a></li>
@@ -230,6 +234,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../io.html">kornia.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image.html">kornia.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../losses.html">kornia.losses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../metrics.html">kornia.metrics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../morphology.html">kornia.morphology</a></li>
@@ -254,10 +259,13 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">KORNIA MODELS</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../models/rt_detr.html">Real-Time Detection Transformer (RT-DETR)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/segment_anything.html">Segment Anything (SAM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/mobile_sam.html">Faster Segment Anything (MobileSAM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/yunet.html">YuNet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/vit.html">Vision Transformer (ViT)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/vit_mobile.html">MobileViT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/tiny_vit.html">TinyViT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/loftr.html">LoFTR (matching)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/defmo.html">DeFMO (video)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/hardnet.html">Hardnet (descriptor)</a></li>
@@ -316,7 +324,7 @@
         </div>
         <article role="main">
           <section id="training-api-experimental">
-<span id="training-api"></span><h1>Training API (experimental)<a class="headerlink" href="#training-api-experimental" title="Permalink to this heading">#</a></h1>
+<span id="training-api"></span><h1>Training API (experimental)<a class="headerlink" href="#training-api-experimental" title="Link to this heading">#</a></h1>
 <p>Kornia provides a Training API with the specific purpose to train and fine-tune the
 supported deep learning algorithms within the library.</p>
 <aside class="sidebar">
@@ -331,7 +339,7 @@ supported deep learning algorithms within the library.</p>
 <p>In order to use our Training API you must: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">kornia[x]</span></code></p>
 </div>
 <section id="why-a-training-api">
-<h2>Why a Training API ?<a class="headerlink" href="#why-a-training-api" title="Permalink to this heading">#</a></h2>
+<h2>Why a Training API ?<a class="headerlink" href="#why-a-training-api" title="Link to this heading">#</a></h2>
 <p>Kornia includes deep learning models that eventually need to be updated through fine-tuning.
 Our aim is to have an API flexible enough to be used across our vision models and enable us to
 override methods or dynamically pass callbacks to ease the process of debugging and experimentations.</p>
@@ -342,7 +350,7 @@ experiment with the training of our models.</p>
 </div>
 </section>
 <section id="design-principles">
-<h2>Design Principles<a class="headerlink" href="#design-principles" title="Permalink to this heading">#</a></h2>
+<h2>Design Principles<a class="headerlink" href="#design-principles" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><cite>kornia</cite> golden rule is to not have heavy dependencies.</p></li>
 <li><p>Our models are simple enough so that a light training API can fulfill our needs.</p></li>
@@ -353,7 +361,7 @@ experiment with the training of our models.</p>
 </ul>
 </section>
 <section id="trainer-usage">
-<h2>Trainer Usage<a class="headerlink" href="#trainer-usage" title="Permalink to this heading">#</a></h2>
+<h2>Trainer Usage<a class="headerlink" href="#trainer-usage" title="Link to this heading">#</a></h2>
 <p>The entry point to start traning with Kornia is through the <a class="reference internal" href="../x.html#kornia.x.Trainer" title="kornia.x.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a> class.</p>
 <p>The main API is a self contained module that heavily relies on <a class="reference external" href="https://github.com/huggingface/accelerate/">accelerate</a>
 to easily scale the training over multi-GPUs/TPU/fp16 <a class="reference external" href="https://github.com/huggingface/accelerate#supported-integrations/">(see more)</a>
@@ -410,7 +418,7 @@ for you.</p>
 </div>
 </section>
 <section id="customize-callbacks">
-<h2>Customize [callbacks]<a class="headerlink" href="#customize-callbacks" title="Permalink to this heading">#</a></h2>
+<h2>Customize [callbacks]<a class="headerlink" href="#customize-callbacks" title="Link to this heading">#</a></h2>
 <p>At this point you might think - <em>Is this API generic enough ?</em></p>
 <blockquote>
 <div><p>Of course not ! What is next ? Let’s have fun and <strong>customize</strong>.</p>
@@ -475,7 +483,7 @@ the data to the device and the rest of the story is just PyTorch :)</p>
 </div>
 </section>
 <section id="preprocess-and-augmentations">
-<h2>Preprocess and augmentations<a class="headerlink" href="#preprocess-and-augmentations" title="Permalink to this heading">#</a></h2>
+<h2>Preprocess and augmentations<a class="headerlink" href="#preprocess-and-augmentations" title="Link to this heading">#</a></h2>
 <p>Taking a pre-trained model from an external source and assume that fine-tuning with your
 data by just changing few things in your model is usually a bad assumption in practice.</p>
 <p>Fine-tuning a model need a lot tricks which usually means designing a good augmentation
@@ -503,7 +511,7 @@ the debugging and experimentation experience.</p>
 </div>
 </section>
 <section id="callbacks-utilities">
-<h2>Callbacks utilities<a class="headerlink" href="#callbacks-utilities" title="Permalink to this heading">#</a></h2>
+<h2>Callbacks utilities<a class="headerlink" href="#callbacks-utilities" title="Link to this heading">#</a></h2>
 <p>We also provide utilities to save checkpoints of the model or early stop the training. You can use
 as follows passing as <code class="docutils literal notranslate"><span class="pre">callbacks</span></code> the classes <a class="reference internal" href="../x.html#kornia.x.ModelCheckpoint" title="kornia.x.ModelCheckpoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelCheckpoint</span></code></a> and
 <a class="reference internal" href="../x.html#kornia.x.EarlyStopping" title="kornia.x.EarlyStopping"><code class="xref py py-class docutils literal notranslate"><span class="pre">EarlyStopping</span></code></a>.</p>
@@ -519,7 +527,7 @@ as follows passing as <code class="docutils literal notranslate"><span class="pr
 </div>
 </section>
 <section id="hyperparameter-sweeps">
-<h2>Hyperparameter sweeps<a class="headerlink" href="#hyperparameter-sweeps" title="Permalink to this heading">#</a></h2>
+<h2>Hyperparameter sweeps<a class="headerlink" href="#hyperparameter-sweeps" title="Link to this heading">#</a></h2>
 <p>Use <a class="reference external" href="https://hydra.cc">hydra</a> to implement an easy search strategy for your hyper-parameters as follows:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -533,7 +541,7 @@ as follows passing as <code class="docutils literal notranslate"><span class="pr
 </div>
 </section>
 <section id="distributed-training">
-<h2>Distributed Training<a class="headerlink" href="#distributed-training" title="Permalink to this heading">#</a></h2>
+<h2>Distributed Training<a class="headerlink" href="#distributed-training" title="Link to this heading">#</a></h2>
 <p>Kornia <a class="reference internal" href="../x.html#kornia.x.Trainer" title="kornia.x.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a> heavily relies on <a class="reference external" href="https://github.com/huggingface/accelerate/">accelerate</a> to
 decouple the process of running your training scripts in a distributed environment.</p>
 <div class="admonition note">
@@ -713,14 +721,14 @@ Add an <cite>xmp.spawn</cite> line in your script as you usually do.</p></li>
     </aside>
   </div>
 </div>
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/scripts/furo.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/design-tabs.js"></script>
-    <script src="../_static/js/custom.js"></script>
+    <script src="../_static/documentation_options.js?v=b9678aa1"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/js/custom.js?v=50ca88b5"></script>
     
     <!-- DocsQA integration start -->
     <script src="https://jina-docqa-ui.netlify.app/dist/qabot.js"></script>
